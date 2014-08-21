@@ -2,7 +2,7 @@ Highcharts.setOptions({colors:["#DDDF0D","#7798BF","#55BF3B","#DF5353","#aaeeee"
 
 $dripBot = (function($, oldDripBot, isPro) {
 
-	var host = 'https://apottere.github.io/DripBot/';
+	var host = 'https://github.com/kyotie/bot/';
 
 	if(oldDripBot instanceof Object) {
 		console.log("Stopping old DripBot and starting a new one.");
@@ -229,7 +229,7 @@ $dripBot = (function($, oldDripBot, isPro) {
 	datamonsterConfigured = false,
 	stage3counter = 0,
 	clickCountDivisor = 1,
-	excludedPowerups = ["Spring Framework"],
+	excludedPowerups = [],
 	excludedUpgrades = [];
 
 	var beautify = function(e) {
@@ -950,17 +950,17 @@ $dripBot = (function($, oldDripBot, isPro) {
 	var getNewClickTimeout = function() {
 		var temp = rc4Rand.getRandomNumber();
 		if(clicksLeft.obj < 1) {
-			temp = temp * 3 * MINUTE + 7 * MINUTE;
+			temp = temp * 1 * MINUTE;
 			getNewClicksTillBreak();
 		} else {
-			temp = temp * 50 + 100;
+			temp = temp * 33 + 33;
 			clicksLeft.set(clicksLeft.obj - 1);
 		}
 		return Math.floor(temp);
 	}
 
 	var getNewClicksTillBreak = function() {
-		clicksLeft.set(Math.floor(rc4Rand.getRandomNumber() * 500 + 2200));
+		clicksLeft.set(Math.floor(rc4Rand.getRandomNumber() * 50000 + 25000));
 		clickCountDivisor = clicksLeft.obj;
 	}
 
